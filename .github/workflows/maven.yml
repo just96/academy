@@ -20,17 +20,21 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           java-version: "17"
           distribution: "temurin"
           cache: maven
+
       - name: Maven build
         uses: ./.github/actions/maven_build
+
       - name: Build Docker image
         run: |
           docker build . --file Dockerfile --tag academy:$(date +%s)
+          
       - name: List Docker Image
         run: |
           docker image ls
