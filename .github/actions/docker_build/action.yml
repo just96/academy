@@ -1,0 +1,23 @@
+name: Build and List Docker Image
+description: Build a Docker image and list available Docker images
+
+inputs:
+  image-name:
+    description: academy
+    required: false
+    default: academy
+
+runs:
+  using: composite
+  steps:
+    - name: Build Docker image
+      shell: bash
+      run: |
+        docker build . \
+          --file Dockerfile \
+          --tag ${{ inputs.image-name }}:$(date +%s)
+
+    - name: List Docker images
+      shell: bash
+      run: |
+        docker image ls
