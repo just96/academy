@@ -34,3 +34,5 @@ jobs:
       - name: List Docker Image
         run: |
           docker image ls
+      - name: Maven build
+        uses: ./.github/actions/maven_build
