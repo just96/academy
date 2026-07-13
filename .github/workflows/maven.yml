@@ -31,3 +31,6 @@ jobs:
       - name: Build Docker image
         run: |
           docker build . --file Dockerfile --tag academy:$(date +%s)
+      - name: List Docker Image
+        run: |
+          docker image ls
